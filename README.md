@@ -37,6 +37,24 @@ nthTabs.addTab({
         content:'看我七十二变',
 });
 ```
+## 添加一个不可关闭的选项卡
+```
+nthTabs.addTab({
+        id:'a',
+        title:'孙悟空',
+        content:'看我七十二变',
+        allowClose:false,
+});
+```
+## 添加一个活动状态的选项卡
+```
+nthTabs.addTab({
+        id:'a',
+        title:'孙悟空',
+        content:'看我七十二变',
+        active:true,
+});
+```
 ## 添加多个选项卡
 ```
 nthTabs.addTab({
