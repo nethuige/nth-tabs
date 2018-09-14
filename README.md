@@ -151,3 +151,9 @@ nthTabs.getAllTabWidth();
 ```
 nthTabs.nthTabs.getTabList();
 ```
+
+## 打赏
+```
+![微信](https://s1.ax1x.com/2018/09/14/iEM5Y8.jpg)
+
+```
