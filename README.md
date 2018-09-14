@@ -153,4 +153,4 @@ nthTabs.nthTabs.getTabList();
 ```
 
 ## 打赏
-<img src="https://s1.ax1x.com/2018/09/14/iEM5Y8.jpg" height="350" width="300">
+<img src="https://s1.ax1x.com/2018/09/14/iEM5Y8.jpg" height="370" width="300">
