@@ -1,11 +1,11 @@
 # nth-tabs是什么？
 基于bootstrap的多功能选项卡插件
 # 其他依赖
->滚动条 jquery.scrollbar
+> 滚动条 jquery.scrollbar
 > 图标 font-awesome
 
-# 为何会有此插件？
-在开发项目的时候刚好需要一款多选项卡的插件，因为找了网上的各种插件基本上总结如下：太丑陋、太古老、功能太少、有bug、XX框架内集成、压缩版。均无法满足本人需求，无奈之下，时间紧张的情况下也只能加班加点自己撸一个。根据自己的需求写了这款插件，插件功能定位主要是满足我个人需求，如果你需要更多的功能需求可以自己更改源码扩展，如果有写的不好的地方或者存在bug欢迎submit issues，如果你觉得对你有用，不妨来个start。
+# 背景
+开发项目时需要一款多选项卡的插件，网上搜寻了一番，基本都是太丑陋、太古老、功能太少、BUG多、集成在框架中的混淆版。均无法满足本人需求，所以，只能自己动手造一个。根据自己的需求写了这款插件，插件功能定位主要是满足我个人需求，有更多需求的可以自己添加修改，如果有写的不好的地方或者存在BUG欢迎提issues，如果你觉得对你有用，请来个start。
 # 使用说明
 ## CSS
 ```
@@ -29,43 +29,78 @@
 ```
 nthTabs = $("#custom-id").nthTabs();
 ```
-## 添加一个选项卡
+## 新建选项卡
 ```
 nthTabs.addTab({
-        id:'a',
-        title:'孙悟空',
-        content:'看我七十二变',
+    id: 'menu-manage',
+    title: '菜单管理',
+    content: '这是菜单管理页面~',
+    //url: "http://www.nethuige.com",
+    active: true, // 是否激活状态，默认是
+    allowClose: true, //是否可关闭，默认是
+    location: false, //是否自动定位，默认是
+    fadeIn: true //是否开启淡入淡出效果，默认是
 });
 ```
-## 添加一个不可关闭的选项卡
+## 快速新建一个自定义内容选项卡
 ```
 nthTabs.addTab({
-        id:'a',
-        title:'孙悟空',
-        content:'看我七十二变',
-        allowClose:false,
+    id: "web-site",
+    title: 'URL选项卡-' + id,
+    url: "http://www.nethuige.com"
 });
 ```
-## 添加一个活动状态的选项卡
+## 快速新建一个自定义URL选项卡
 ```
 nthTabs.addTab({
-        id:'a',
-        title:'孙悟空',
-        content:'看我七十二变',
-        active:true,
+    id: "web-site",
+    title: 'URL选项卡-' + id,
+    url: "http://www.nethuige.com"
 });
 ```
-## 添加多个选项卡
+## 新建一个不可关闭的选项卡
 ```
 nthTabs.addTab({
-        id:'a',
-        title:'孙悟空',
-        content:'看我七十二变',
+    id: 'home',
+    title: '首页',
+    content: '这里是首页',
+    allowClose: false
+});
+```
+## 新建一个非活动状态的选项卡
+```
+nthTabs.addTab({
+    id: 'role-manage',
+    title: '角色管理',
+    active: false,
+    content: '这是角色管理页面~'
+});
+```
+## 新建多个选项卡-连贯操作
+```
+nthTabs.addTab({
+    id: 'menu-manage',
+    title: '菜单管理',
+    active: false,
+    content: '这是菜单管理页面~'
 }).addTab({
-        id:'b',
-        title:'孙悟空二号',
-        content:'看我七十三变',
+    id: 'role-manage',
+    title: '角色管理',
+    active: false,
+    content: '这是角色管理页面~'
 });
+```
+## 新建多个选项卡-批量操作
+```
+nthTabs.addTabs([{
+    id: 'user-manage',
+    title: '用户管理',
+    content: '这是用户管理页面~'
+}, {
+    id: 'auth-manage',
+    title: '权限管理',
+    content: '这是权限管理页面~'
+}]);
 ```
 ## 删除一个选项卡
 ```
@@ -79,9 +114,13 @@ nthTabs.delOtherTab();
 ```
 nthTabs.delAllTab();
 ```
-## 切换到指定选项卡
+## 激活指定选项卡
 ```
 nthTabs.setActTab(id);
+```
+## 切换到指定选项卡
+```
+nthTabs.toggleTab(id);
 ```
 ## 定位到当前选项卡
 ```
