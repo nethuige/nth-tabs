@@ -47,7 +47,7 @@ nthTabs.addTab({
 ```
 nthTabs.addTab({
     id: "web-site",
-    title: 'URL选项卡-' + id,
+    title: 'URL选项卡',
     url: "http://www.nethuige.com"
 });
 ```
