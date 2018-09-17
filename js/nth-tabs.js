@@ -111,7 +111,7 @@
                     tabContent.push('<iframe src="'+options.url+'" frameborder="0" name="iframe-'+frameName+'" class="nth-tabs-frame"></iframe>');
                     frameName++;
                 }else{
-                    tabContent.push(options.content);
+                    tabContent.push('<div class="nth-tabs-content">'+options.content+"</div>");
                 }
                 tabContent.push('</div>');
                 nthTabs.find(".tab-content").append(tabContent.join(''));
@@ -178,7 +178,7 @@
             // 删除其他选项卡
             delOtherTab: function () {
                 nthTabs.find(".nav-tabs li").not('[class="active"]').remove();
-                nthTabs.find(".tab-content div.tab-pane").not('[class="tab-pane active"]').remove();
+                nthTabs.find(".tab-content div.tab-pane").not('[class$="active"]').remove();
                 nthTabs.find('.content-tabs-container').css("margin-left", 40); //重置位置
                 return this;
             },
