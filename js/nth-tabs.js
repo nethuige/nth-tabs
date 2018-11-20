@@ -204,6 +204,12 @@
             toggleTab: function (tabId) {
                 this.setActTab(tabId).locationTab(tabId);
                 return this;
+            },
+
+            // 指定选项卡是否存在
+            isExistsTab: function (tabId) {
+                tabId = tabId.indexOf('#') > -1 ? tabId : '#' + tabId;
+                return nthTabs.find(tabId).length>0;
             }
         };
 

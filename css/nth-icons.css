@@ -3,8 +3,8 @@
     font-family: "Nth Icons";
     font-style: normal;
     font-weight: 400;
-    src: url(../font/nth-icons.eot?v=.2.3);
-    src: url(../font/nth-icons.eot?#iefix&v=.2.3) format("embedded-opentype"),url(../font/nth-icons.woff2?v=.2.3) format("woff2"),url(../font/nth-icons.woff?v=.2.3) format("woff"),url(../font/nth-icons.ttf?v=.2.3) format("truetype"),url(../font/nth-icons.svg?v=.2.3#web-icons) format("svg")
+    src: url(../fonts/nth-icons.eot?v=.2.3);
+    src: url(../fonts/nth-icons.eot?#iefix&v=.2.3) format("embedded-opentype"),url(../fonts/nth-icons.woff2?v=.2.3) format("woff2"),url(../fonts/nth-icons.woff?v=.2.3) format("woff"),url(../fonts/nth-icons.ttf?v=.2.3) format("truetype"),url(../fonts/nth-icons.svg?v=.2.3#web-icons) format("svg")
 }
 
 [class*=" nth-icon-"],[class^=nth-icon-] {
