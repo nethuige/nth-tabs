@@ -149,7 +149,11 @@ nthTabs.getAllTabWidth();
 ```
 ## 获取所有选项卡
 ```
-nthTabs.nthTabs.getTabList();
+nthTabs.getTabList();
+```
+## 获取指定选项卡是否存在
+```
+nthTabs.isExistsTab();
 ```
 
 ## 打赏
