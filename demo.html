@@ -110,6 +110,11 @@
                 }]);
             });
 
+            // 选项卡切换事件处理器
+            nthTabs.tabToggleHandler(function (data) {
+                console.log(data);
+            });
+
         });
     </script>
 </head>
@@ -129,6 +134,7 @@
             <button type="button" class="btn btn-info" onclick="nthTabs.toggleTab('menu-manage')">切换选项卡(菜单管理)</button>
             <button type="button" class="btn btn-info" onclick="nthTabs.locationTab('home')">定位选项卡</button>
             <button type="button" class="btn btn-danger" onclick="nthTabs.delTab('role-manage')">关闭选项卡(角色管理)</button>
+            <button type="button" class="btn btn-danger" onclick="nthTabs.delTab()">关闭当前选项卡</button>
             <button type="button" class="btn btn-danger" onclick="nthTabs.delOtherTab()">关闭其他</button>
             <button type="button" class="btn btn-danger" onclick="nthTabs.delAllTab()">关闭所有</button>
             <button type="button" class="btn btn-warning" onclick="$('.roll-nav-left').click()">左滑动</button>

@@ -107,6 +107,10 @@ nthTabs.addTabs([{
 ```
 nthTabs.delTab('id');
 ```
+## 删除当前选项卡
+```
+nthTabs.delTab();
+```
 ## 删除其他选项卡
 ```
 nthTabs.delOtherTab();
@@ -154,6 +158,10 @@ nthTabs.getTabList();
 ## 获取指定选项卡是否存在
 ```
 nthTabs.isExistsTab();
+```
+## 选项卡切换事件处理器
+```
+nthTabs.tabToggleHandler(func);
 ```
 
 ## 打赏

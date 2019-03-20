@@ -20,6 +20,8 @@
 
         var settings = $.extend({}, defaults, options);
 
+        var handler = [];
+
         var frameName = 0;
 
         var template =
@@ -53,7 +55,7 @@
         var run = function(){
             nthTabs.html(template);
             event.onWindowsResize().onTabClose().onTabRollLeft().onTabRollRight().onTabList()
-                .onTabCloseOpt().onTabCloseAll().onTabCloseOther().onLocationTab();
+                .onTabCloseOpt().onTabCloseAll().onTabCloseOther().onLocationTab().onTabToggle();
             return methods;
         };
 
@@ -97,7 +99,7 @@
                 var location = options.location == undefined ? settings.location : options.location;
                 var fadeIn = options.fadeIn == undefined ? settings.fadeIn : options.fadeIn;
                 var url = options.url == undefined ? "" : options.url;
-                tab.push('<li title="' + options.title + '">');
+                tab.push('<li title="' + options.title + '" '+(allowClose ? '' : 'not-allow-close')+'>');
                 tab.push('<a href="#' + options.id + '" data-toggle="tab">');
                 tab.push('<span>' + options.title + '</span>');
                 tab.push('</a>');
@@ -106,7 +108,7 @@
                 nthTabs.find(".nav-tabs").append(tab.join(''));
                 //tab-content
                 var tabContent = [];
-                tabContent.push('<div class="tab-pane '+(fadeIn ? 'animation-fade' : '')+'" id="' + options.id + '">');
+                tabContent.push('<div class="tab-pane '+(fadeIn ? 'animation-fade' : '')+'" id="' + options.id  +'" '+(allowClose ? '' : 'not-allow-close')+'>');
                 if(url.length>0){
                     tabContent.push('<iframe src="'+options.url+'" frameborder="0" name="iframe-'+frameName+'" class="nth-tabs-frame"></iframe>');
                     frameName++;
@@ -157,6 +159,7 @@
                 tabId = tabId == undefined ? methods.getActiveId() : tabId;
                 tabId = tabId.indexOf('#') > -1 ? tabId : '#' + tabId;
                 var navTabA = nthTabs.find("[href='" + tabId + "']");
+                if(navTabA.parent().attr('not-allow-close')!=undefined) return false;
                 // 如果关闭的是激活状态的选项卡
                 if (navTabA.parent().attr('class') == 'active') {
                     // 激活选项卡，如果后面存在激活后面，否则激活前面
@@ -177,16 +180,16 @@
 
             // 删除其他选项卡
             delOtherTab: function () {
-                nthTabs.find(".nav-tabs li").not('[class="active"]').remove();
-                nthTabs.find(".tab-content div.tab-pane").not('[class$="active"]').remove();
+                nthTabs.find(".nav-tabs li").not('[class="active"]').not('[not-allow-close]').remove();
+                nthTabs.find(".tab-content div.tab-pane").not('[not-allow-close]').not('[class$="active"]').remove();
                 nthTabs.find('.content-tabs-container').css("margin-left", 40); //重置位置
                 return this;
             },
 
             // 删除全部选项卡
             delAllTab: function () {
-                nthTabs.find(".nav-tabs li").remove();
-                nthTabs.find(".tab-content div").remove();
+                this.delOtherTab();
+                this.delTab();
                 return this;
             },
 
@@ -210,6 +213,11 @@
             isExistsTab: function (tabId) {
                 tabId = tabId.indexOf('#') > -1 ? tabId : '#' + tabId;
                 return nthTabs.find(tabId).length>0;
+            },
+
+            // 选项卡切换事件处理器
+            tabToggleHandler: function(func){
+                handler["tabToggleHandler"] = func;
             }
         };
 
@@ -342,6 +350,23 @@
                     e.stopPropagation();
                 });
                 return this;
+            },
+
+            // 选项卡切换事件
+            onTabToggle: function(){
+                nthTabs.on("click", '.nav-tabs li', function () {
+                    var lastTabText = nthTabs.find(".nav-tabs li a[href='#"+methods.getActiveId()+"'] span").text();
+                    handler["tabToggleHandler"]({
+                        last:{
+                            tabId:methods.getActiveId(),
+                            tabText:lastTabText
+                        },
+                        active:{
+                            tabId:$(this).find("a").attr("href").replace('#',''),
+                            tabText:$(this).find("a span").text()
+                        }
+                    });
+                });
             }
         };
         return run();
