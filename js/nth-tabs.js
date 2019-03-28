@@ -356,7 +356,7 @@
             onTabToggle: function(){
                 nthTabs.on("click", '.nav-tabs li', function () {
                     var lastTabText = nthTabs.find(".nav-tabs li a[href='#"+methods.getActiveId()+"'] span").text();
-                    handler["tabToggleHandler"]({
+                    handler.hasOwnProperty("tabToggleHandler") && handler["tabToggleHandler"]({
                         last:{
                             tabId:methods.getActiveId(),
                             tabText:lastTabText
