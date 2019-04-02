@@ -92,6 +92,7 @@
 
             // 新建单个选项卡
             addTab: function (options) {
+                if(this.isExistsTab(options.id)){this.setActTab(options.id);return;}
                 // nav-tab
                 var tab = [];
                 var active = options.active == undefined ? settings.active : options.active;

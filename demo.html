@@ -55,6 +55,22 @@
                 allowClose: false
             });
 
+            // 批量新建示例
+            nthTabs.addTabs([
+                {
+                    id: 'user-manage',
+                    title: '用户管理',
+                    active: false,
+                    content: '这是用户管理页面~'
+                },
+                {
+                    id: 'permission-manage',
+                    title: '权限管理',
+                    active: false,
+                    content: '这是权限管理页面~'
+                }
+            ]);
+
             // 连贯操作示例
             nthTabs.addTab({
                 id: 'menu-manage',
@@ -66,6 +82,17 @@
                 title: '角色管理',
                 active: false,
                 content: '这是角色管理页面~'
+            });
+
+
+            // 重复新建一个菜单管理(因id已存在，所以不再次打开，直接切换)
+            $("#add-tab-menu").on("click",function(){
+                nthTabs.addTab({
+                    id: 'menu-manage',
+                    title: '菜单管理',
+                    active: false,
+                    content: '这是菜单管理页面~'
+                });
             });
 
             // 新建选项卡(自定义内容)
@@ -100,13 +127,13 @@
             $("#add-tabs").on("click", function () {
                 // 批量新建选项卡
                 nthTabs.addTabs([{
-                    id: 'user-manage',
-                    title: '用户管理',
-                    content: '这是用户管理页面~'
+                    id: 'system-manage',
+                    title: '系统管理',
+                    content: '这是系统管理页面~'
                 }, {
-                    id: 'auth-manage',
-                    title: '权限管理',
-                    content: '这是权限管理页面~'
+                    id: 'plugins-manage',
+                    title: '插件管理',
+                    content: '这是插件管理页面~'
                 }]);
             });
 
@@ -127,6 +154,7 @@
     </div>
     <div style="margin-top:20px;">
         <div style="line-height:50px;">
+            <button type="button" class="btn btn-primary" id="add-tab-menu">重复新建菜单管理选项卡(将自动切换)</button>
             <button type="button" class="btn btn-primary" id="add-tab-content">新建选项卡(自定义内容)</button>
             <button type="button" class="btn btn-primary" id="add-tab-url">新建选项卡(URL地址)</button>
             <button type="button" class="btn btn-primary" id="add-tabs">批量新建选项卡</button>
